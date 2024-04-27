@@ -3,6 +3,10 @@ options:
   bundleIdPrefix: com.bundleId
   postGenCommand: pod update
   deploymentTarget: "16.0"
+packages:
+  KeychainSwift:
+    url: https://github.com/evgenyneu/keychain-swift.git
+    majorVersion: 24.0.0
 targets:
   CinemaStarApp:
     type: application
@@ -23,6 +27,8 @@ targets:
         ASSETCATALOG_COMPILER_GENERATE_ASSET_SYMBOLS: true
         ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS: true
         GENERATE_INFOPLIST_FILE: true
+    dependencies:
+      - package: KeychainSwift
     postCompileScripts:
       - script: |
                 if [[ "$(uname -m)" == arm64 ]]; then
